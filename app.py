@@ -10,14 +10,9 @@ def load_data():
     iip_data = pd.read_excel('IIP2024.xlsx')
     synthetic_data = pd.read_excel('Synthetic_Industry_Data.xlsx', sheet_name=None)
     
-    # Load stock data from CSV files in the stockdata folder
+    # No stock data loading
     stock_data = {}
-    stock_data_folder = 'stockdata'
-    for filename in os.listdir(stock_data_folder):
-        if filename.endswith('.csv'):
-            stock_name = filename.replace('.csv', '')
-            stock_data[stock_name] = pd.read_csv(os.path.join(stock_data_folder, filename))
-    
+
     return iip_data, synthetic_data, stock_data
 
 iip_data, synthetic_data, stock_data = load_data()
