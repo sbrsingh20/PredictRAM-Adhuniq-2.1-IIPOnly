@@ -1,4 +1,3 @@
-import os
 import pandas as pd
 import streamlit as st
 import plotly.graph_objs as go
@@ -36,8 +35,15 @@ indicators = {
 # Streamlit app interface
 st.title('Industry Indicator Prediction App')
 
+# Sidebar for user inputs
+st.sidebar.header('User Inputs')
+
 # Select Industry
-industry = st.selectbox('Select Industry:', list(indicators.keys()))
+industry = st.sidebar.selectbox('Select Industry:', list(indicators.keys()))
+
+# User inputs for prediction
+expected_cpi = st.sidebar.number_input('Expected CPI (%):', value=5.00, step=0.01)
+expected_interest_rate = st.sidebar.number_input('Expected RBI Interest Rate (%):', value=6.00, step=0.01)
 
 # Display selected industry leading and lagging indicators
 st.header(f'{industry} Indicators')
@@ -49,9 +55,6 @@ st.subheader('Lagging Indicators')
 for indicator in indicators[industry]['Lagging']:
     st.write(f'- {indicator}')
 
-# User inputs for prediction
-expected_cpi = st.number_input('Expected CPI (%):', value=5.00, step=0.01)
-expected_interest_rate = st.number_input('Expected RBI Interest Rate (%):', value=6.00, step=0.01)
 st.subheader('Predict Future Values')
 
 # Input fields for leading indicators
