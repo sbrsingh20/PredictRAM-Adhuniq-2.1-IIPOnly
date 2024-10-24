@@ -55,25 +55,6 @@ st.subheader('Lagging Indicators')
 for indicator in indicators[industry]['Lagging']:
     st.write(f'- {indicator}')
 
-# Display latest data for Leading and Lagging Indicators
-st.subheader('Latest Data for Indicators')
-
-# Create a DataFrame for the latest data
-latest_data = {}
-
-# Assuming synthetic_data contains the latest values for each indicator
-for indicator in indicators[industry]['Leading']:
-    latest_value = synthetic_data['Leading Indicators'].get(indicator, 'N/A')  # Adjust this according to your actual data structure
-    latest_data[indicator] = latest_value
-
-for indicator in indicators[industry]['Lagging']:
-    latest_value = synthetic_data['Lagging Indicators'].get(indicator, 'N/A')  # Adjust this according to your actual data structure
-    latest_data[indicator] = latest_value
-
-# Convert the dictionary to a DataFrame for display
-latest_data_df = pd.DataFrame(list(latest_data.items()), columns=['Indicator', 'Latest Value'])
-st.dataframe(latest_data_df)
-
 st.subheader('Predict Future Values')
 
 # Input fields for leading indicators
